@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pikvaro — Discover Better. Choose Smarter.</title>
+
+    <meta name="description"
+          content="Pikvaro helps you discover better products and choose smarter.">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f8fa;
+            color: #111827;
+        }
+
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 20px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+        }
+
+        nav a {
+            margin-left: 25px;
+            text-decoration: none;
+            color: #374151;
+            font-weight: 600;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: #ffffff;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 22px;
+            color: #6b7280;
+            margin-bottom: 35px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #111827;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 700;
+        }
+
+        .section {
+            padding: 70px 6%;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 34px;
+            margin-bottom: 40px;
+        }
+
+        .categories {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .category {
+            background: white;
+            padding: 35px 20px;
+            border-radius: 12px;
+            border: 1px solid #e5e7eb;
+            font-size: 20px;
+            font-weight: 700;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: #111827;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">Pikvaro</div>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="#about">About</a>
+    </nav>
+</header>
+
+<section class="hero">
+
+    <h1>Discover better.<br>Choose smarter.</h1>
+
+    <p>
+        AI-powered product discovery to help you find products
+        worth your money.
+    </p>
+
+    <a href="#categories" class="button">
+        Explore Products
+    </a>
+
+</section>
+
+<section class="section" id="categories">
+
+    <h2>Explore Pikvaro</h2>
+
+    <div class="categories">
+
+        <div class="category">💻 Technology</div>
+
+        <div class="category">🤖 AI Tools</div>
+
+        <div class="category">🎮 Gaming</div>
+
+        <div class="category">🏠 Home</div>
+
+        <div class="category">💪 Fitness</div>
+
+        <div class="category">🔥 Best Deals</div>
+
+    </div>
+
+</section>
+
+<section class="section" id="about">
+
+    <h2>Why Pikvaro?</h2>
+
+    <p>
+        We research products, compare options and help you
+        make smarter buying decisions.
+    </p>
+
+</section>
+
+<footer>
+
+    <p>© 2026 Pikvaro. Discover better. Choose smarter.</p>
+
+</footer>
+
+</body>
+</html>
