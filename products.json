@@ -1,0 +1,30 @@
+{
+  "version": "1.0",
+  "categories": [
+    {
+      "id": "technology",
+      "name": "Technology",
+      "emoji": "💻"
+    },
+    {
+      "id": "ai-tools",
+      "name": "AI Tools",
+      "emoji": "🤖"
+    }
+  ],
+  "products": [],
+  "productTemplate": {
+    "id": "",
+    "name": "",
+    "category": "",
+    "description": "",
+    "image": "",
+    "price": null,
+    "currency": "",
+    "rating": null,
+    "recommendation": "",
+    "affiliateUrl": "",
+    "source": "",
+    "lastUpdated": ""
+  }
+}
