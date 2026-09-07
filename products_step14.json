@@ -1,0 +1,75 @@
+{
+  "version": "1.1",
+  "updated": "2026-09-07",
+  "scope": "Worldwide",
+  "categories": [
+    {
+      "id": "technology",
+      "name": "Technology",
+      "emoji": "💻"
+    },
+    {
+      "id": "ai-tools",
+      "name": "AI Tools",
+      "emoji": "🤖"
+    }
+  ],
+  "products": [
+    {
+      "id": "asus-vivobook-go-15",
+      "name": "ASUS Vivobook Go 15",
+      "category": "technology",
+      "description": "Affordable 15.6-inch Windows laptop family suitable for everyday browsing, study, office work and general use. Specifications vary by regional configuration.",
+      "image": "",
+      "price": null,
+      "currency": "",
+      "rating": null,
+      "recommendation": "Good entry-level choice for everyday computing; check the exact regional configuration before buying.",
+      "affiliateUrl": "",
+      "source": "https://www.asus.com/laptops/for-home/vivobook/asus-vivobook-go-15-oled-e1504g/techspec/",
+      "lastUpdated": "2026-09-07"
+    },
+    {
+      "id": "hp-laptop-15",
+      "name": "HP Laptop 15",
+      "category": "technology",
+      "description": "HP 15 is a family of everyday Windows laptops available in multiple processor, memory and storage configurations depending on market.",
+      "image": "",
+      "price": null,
+      "currency": "",
+      "rating": null,
+      "recommendation": "A flexible mainstream option; compare the exact CPU, RAM, SSD and display configuration rather than buying on the model family name alone.",
+      "affiliateUrl": "",
+      "source": "https://www.hp.com/za-en/products/laptops/product-details/2103603715",
+      "lastUpdated": "2026-09-07"
+    },
+    {
+      "id": "apple-macbook-neo",
+      "name": "Apple MacBook Neo",
+      "category": "technology",
+      "description": "13-inch Mac laptop with Apple A18 Pro, 8GB unified memory and 256GB or 512GB SSD configurations. Apple lists up to 16 hours of video streaming and up to 11 hours of wireless web use.",
+      "image": "",
+      "price": 599,
+      "currency": "USD",
+      "rating": null,
+      "recommendation": "Strong option for users who want a compact macOS laptop, long battery life and Apple's ecosystem. Local pricing and availability vary by country.",
+      "affiliateUrl": "",
+      "source": "https://www.apple.com/macbook-neo/specs/",
+      "lastUpdated": "2026-09-07"
+    }
+  ],
+  "productTemplate": {
+    "id": "",
+    "name": "",
+    "category": "",
+    "description": "",
+    "image": "",
+    "price": null,
+    "currency": "",
+    "rating": null,
+    "recommendation": "",
+    "affiliateUrl": "",
+    "source": "",
+    "lastUpdated": ""
+  }
+}
