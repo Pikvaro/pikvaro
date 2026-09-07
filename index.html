@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pikvaro helps you discover better products and choose smarter.">
+  <title>Pikvaro — Discover better. Choose smarter.</title>
+
+  <style>
+    :root {
+      --bg: #f7f8fc;
+      --surface: #ffffff;
+      --text: #111827;
+      --muted: #6b7280;
+      --primary: #5b4bff;
+      --primary-dark: #4338ca;
+      --border: #e5e7eb;
+      --shadow: 0 12px 35px rgba(17, 24, 39, 0.08);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      font-size: 27px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    nav a {
+      color: #4b5563;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      padding: 92px 0 78px;
+      text-align: center;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(91, 75, 255, 0.14), transparent 38%),
+        var(--bg);
+    }
+
+    .badge {
+      display: inline-block;
+      margin-bottom: 18px;
+      padding: 7px 13px;
+      border: 1px solid #ddd9ff;
+      border-radius: 999px;
+      background: #ffffff;
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .hero h1 {
+      max-width: 800px;
+      margin: 0 auto 18px;
+      font-size: clamp(42px, 7vw, 72px);
+      line-height: 1.02;
+      letter-spacing: -3px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero p {
+      max-width: 650px;
+      margin: 0 auto 32px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .search-wrap {
+      width: min(680px, 100%);
+      margin: 0 auto;
+      display: flex;
+      gap: 10px;
+      padding: 8px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .search-wrap input {
+      flex: 1;
+      min-width: 0;
+      padding: 14px 16px;
+      border: 0;
+      outline: 0;
+      background: transparent;
+      color: var(--text);
+    }
+
+    .search-wrap button,
+    .primary-button {
+      border: 0;
+      border-radius: 12px;
+      padding: 13px 20px;
+      background: var(--primary);
+      color: #ffffff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .search-wrap button:hover,
+    .primary-button:hover {
+      background: var(--primary-dark);
+    }
+
+    section {
+      padding: 78px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .section-heading h2 {
+      margin-bottom: 10px;
+      font-size: 36px;
+      letter-spacing: -1px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    .feature-grid,
+    .category-grid,
+    .product-grid,
+    .steps-grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .feature-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .feature-card,
+    .category-card,
+    .product-card,
+    .step-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 6px 22px rgba(17, 24, 39, 0.04);
+    }
+
+    .feature-card {
+      padding: 28px;
+    }
+
+    .icon {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      border-radius: 14px;
+      background: #f0efff;
+      font-size: 23px;
+    }
+
+    .feature-card h3,
+    .step-card h3 {
+      margin-bottom: 8px;
+    }
+
+    .feature-card p,
+    .step-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .products-section {
+      background: #ffffff;
+    }
+
+    .product-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .product-card {
+      overflow: hidden;
+    }
+
+    .product-image {
+      height: 190px;
+      display: grid;
+      place-items: center;
+      background: #f3f4f6;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-content {
+      padding: 22px;
+    }
+
+    .product-category {
+      margin-bottom: 7px;
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .product-content h3 {
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+
+    .product-content p {
+      min-height: 48px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .product-meta {
+      margin-top: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .product-price {
+      font-weight: 800;
+    }
+
+    .product-button {
+      border: 0;
+      border-radius: 10px;
+      padding: 10px 14px;
+      background: #111827;
+      color: #ffffff;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .product-button:hover {
+      background: var(--primary);
+    }
+
+    .empty-state {
+      padding: 45px 20px;
+      text-align: center;
+      border: 1px dashed #cfd3dc;
+      border-radius: var(--radius);
+      background: #fafbff;
+      color: var(--muted);
+    }
+
+    .empty-state h3 {
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .category-grid {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    .category-card {
+      padding: 24px 14px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .category-card:hover {
+      transform: translateY(-3px);
+      border-color: #b9b3ff;
+    }
+
+    .category-card .emoji {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 30px;
+    }
+
+    .category-card strong {
+      font-size: 13px;
+    }
+
+    .steps-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .step-card {
+      padding: 28px;
+    }
+
+    .step-number {
+      margin-bottom: 16px;
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .future {
+      background: #111827;
+      color: #ffffff;
+    }
+
+    .future .section-heading p {
+      color: #cbd5e1;
+    }
+
+    .future-box {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 36px;
+      border: 1px solid #374151;
+      border-radius: var(--radius);
+      background: #182131;
+      text-align: center;
+    }
+
+    .future-box p {
+      color: #d1d5db;
+    }
+
+    .newsletter {
+      text-align: center;
+    }
+
+    .newsletter-box {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 40px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      min-width: 0;
+      padding: 13px 15px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      outline: none;
+    }
+
+    .newsletter-form input:focus {
+      border-color: var(--primary);
+    }
+
+    .message {
+      min-height: 24px;
+      margin-top: 12px;
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    footer {
+      padding: 34px 0;
+      background: #ffffff;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .footer-inner p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .status {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    @media (max-width: 900px) {
+      .feature-grid,
+      .product-grid,
+      .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        min-height: 64px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero {
+        padding: 68px 0 58px;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .search-wrap {
+        flex-direction: column;
+        padding: 10px;
+      }
+
+      .search-wrap input {
+        width: 100%;
+      }
+
+      section {
+        padding: 58px 0;
+      }
+
+      .feature-grid,
+      .product-grid,
+      .steps-grid,
+      .category-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#top">Pik<span>varo</span></a>
+
+      <nav aria-label="Main navigation">
+        <a href="#products">Picks</a>
+        <a href="#categories">Categories</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#future">AI</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container">
+        <div class="badge">AI-powered product discovery</div>
+
+        <h1>
+          Discover better.<br>
+          <span>Choose smarter.</span>
+        </h1>
+
+        <p>
+          Pikvaro is being built to help you discover useful products,
+          compare your options, and make smarter buying decisions.
+        </p>
+
+        <form class="search-wrap" id="searchForm">
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Search Pikvaro products..."
+            aria-label="Search Pikvaro products"
+          >
+          <button type="submit">Search</button>
+        </form>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-heading">
+          <h2>Why Pikvaro?</h2>
+          <p>A smarter way to discover products online.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="icon">🔎</div>
+            <h3>Discover</h3>
+            <p>Find products across useful categories without endless searching.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon">🧠</div>
+            <h3>Research</h3>
+            <p>Build a system that can collect and organize useful product information.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon">✅</div>
+            <h3>Choose smarter</h3>
+            <p>Make product decisions using clear information instead of guesswork.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="products-section" id="products">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Pikvaro Picks</h2>
+          <p>Products will appear here automatically from the Pikvaro product database.</p>
+        </div>
+
+        <div id="productGrid" class="product-grid">
+          <div class="empty-state">
+            <h3>Building the first Pikvaro picks</h3>
+            <p>Real products will be added to the database next. No fake products or fake ratings.</p>
+          </div>
+        </div>
+
+        <p id="productStatus" class="status" style="text-align:center; margin-top:18px;"></p>
+      </div>
+    </section>
+
+    <section id="categories">
+      <div class="container">
+        <div class="section-heading">
+          <h2>Explore categories</h2>
+          <p>Start with the areas we are building first.</p>
+        </div>
+
+        <div id="categoryGrid" class="category-grid"></div>
+      </div>
+    </section>
+
+    <section id="how-it-works">
+      <div class="container">
+        <div class="section-heading">
+          <h2>How Pikvaro works</h2>
+          <p>The foundation is being built step by step.</p>
+        </div>
+
+        <div class="steps-grid">
+          <article class="step-card">
+            <div class="step-number">01 — DISCOVER</div>
+            <h3>Find useful products</h3>
+            <p>Collect products from trusted sources and organize them by category.</p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">02 — RESEARCH</div>
+            <h3>Analyze the options</h3>
+            <p>Gather information that can help people understand what each product offers.</p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">03 — RECOMMEND</div>
+            <h3>Help people choose</h3>
+            <p>Present useful recommendations clearly and eventually connect them to affiliate offers.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="future" id="future">
+      <div class="container">
+        <div class="section-heading">
+          <h2>The Pikvaro AI vision</h2>
+          <p>Automation comes after the foundation is working.</p>
+        </div>
+
+        <div class="future-box">
+          <p>
+            The long-term Pikvaro system can research products, create content,
+            publish across supported social platforms, measure results, and
+            improve its recommendations over time.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter">
+      <div class="container">
+        <div class="newsletter-box">
+          <div class="section-heading" style="margin-bottom:0;">
+            <h2>Stay connected</h2>
+            <p>Newsletter functionality will be connected later.</p>
+          </div>
+
+          <form class="newsletter-form" id="newsletterForm">
+            <input
+              id="emailInput"
+              type="email"
+              placeholder="Your email address"
+              aria-label="Your email address"
+              required
+            >
+            <button class="primary-button" type="submit">Join</button>
+          </form>
+
+          <div id="newsletterMessage" class="message" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Pikvaro. Discover better. Choose smarter.</p>
+      <p>Built step by step.</p>
+    </div>
+  </footer>
+
+  <script>
+    "use strict";
+
+    let allProducts = [];
+    let allCategories = [];
+
+    const productGrid = document.getElementById("productGrid");
+    const productStatus = document.getElementById("productStatus");
+    const categoryGrid = document.getElementById("categoryGrid");
+    const searchInput = document.getElementById("searchInput");
+    const searchForm = document.getElementById("searchForm");
+    const newsletterForm = document.getElementById("newsletterForm");
+    const emailInput = document.getElementById("emailInput");
+    const newsletterMessage = document.getElementById("newsletterMessage");
+    const yearElement = document.getElementById("year");
+
+    yearElement.textContent = new Date().getFullYear();
+
+    function escapeHtml(value) {
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    function formatPrice(product) {
+      if (product.price === null || product.price === undefined || product.price === "") {
+        return "";
+      }
+
+      const currency = escapeHtml(product.currency || "");
+      return `${currency} ${escapeHtml(product.price)}`.trim();
+    }
+
+    function renderCategories() {
+      if (!categoryGrid) {
+        return;
+      }
+
+      if (!allCategories.length) {
+        categoryGrid.innerHTML = "";
+        return;
+      }
+
+      categoryGrid.innerHTML = allCategories.map(function(category) {
+        const categoryId = escapeHtml(category.id);
+        const emoji = escapeHtml(category.emoji || "📦");
+        const name = escapeHtml(category.name || category.id || "Category");
+
+        return `
+          <button class="category-card" type="button" data-category="${categoryId}">
+            <span class="emoji">${emoji}</span>
+            <strong>${name}</strong>
+          </button>
+        `;
+      }).join("");
+
+      categoryGrid.querySelectorAll("[data-category]").forEach(function(button) {
+        button.addEventListener("click", function() {
+          const category = button.getAttribute("data-category");
+          searchProducts("", category);
+          document.getElementById("products").scrollIntoView({ behavior: "smooth" });
+        });
+      });
+    }
+
+    function renderProducts(products) {
+      if (!productGrid) {
+        return;
+      }
+
+      if (!products.length) {
+        productGrid.innerHTML = `
+          <div class="empty-state" style="grid-column: 1 / -1;">
+            <h3>No products found</h3>
+            <p>Try another search, or add real products to products.json.</p>
+          </div>
+        `;
+
+        productStatus.textContent = allProducts.length
+          ? "No products match the current search."
+          : "The product database is ready and waiting for real products.";
+
+        return;
+      }
+
+      productGrid.innerHTML = products.map(function(product) {
+        const name = escapeHtml(product.name || "Unnamed product");
+        const category = escapeHtml(product.category || "Product");
+        const description = escapeHtml(product.description || "Product information coming soon.");
+        const image = escapeHtml(product.image || "");
+        const affiliateUrl = escapeHtml(product.affiliateUrl || "");
+        const price = formatPrice(product);
+
+        const imageHtml = image
+          ? `<img src="${image}" alt="${name}" loading="lazy">`
+          : `<span>Product image coming soon</span>`;
+
+        const buttonHtml = affiliateUrl
+          ? `<a class="product-button" href="${affiliateUrl}" target="_blank" rel="noopener noreferrer">View product</a>`
+          : `<button class="product-button" type="button" disabled>Coming soon</button>`;
+
+        return `
+          <article class="product-card">
+            <div class="product-image">${imageHtml}</div>
+
+            <div class="product-content">
+              <div class="product-category">${category}</div>
+              <h3>${name}</h3>
+              <p>${description}</p>
+
+              <div class="product-meta">
+                <span class="product-price">${price}</span>
+                ${buttonHtml}
+              </div>
+            </div>
+          </article>
+        `;
+      }).join("");
+
+      productStatus.textContent = `${products.length} product${products.length === 1 ? "" : "s"} displayed.`;
+    }
+
+    function searchProducts(searchTerm, categoryFilter) {
+      const term = String(searchTerm || "").trim().toLowerCase();
+      const category = String(categoryFilter || "").trim().toLowerCase();
+
+      const filtered = allProducts.filter(function(product) {
+        const name = String(product.name || "").toLowerCase();
+        const description = String(product.description || "").toLowerCase();
+        const productCategory = String(product.category || "").toLowerCase();
+
+        const matchesSearch =
+          !term ||
+          name.includes(term) ||
+          description.includes(term) ||
+          productCategory.includes(term);
+
+        const matchesCategory =
+          !category ||
+          productCategory === category;
+
+        return matchesSearch && matchesCategory;
+      });
+
+      renderProducts(filtered);
+    }
+
+    async function loadProducts() {
+      try {
+        const response = await fetch("products.json", {
+          cache: "no-store"
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}`);
+        }
+
+        const data = await response.json();
+
+        if (!Array.isArray(data.products)) {
+          throw new Error("products.json does not contain a valid products array.");
+        }
+
+        allProducts = data.products;
+        allCategories = Array.isArray(data.categories) ? data.categories : [];
+
+        renderCategories();
+        renderProducts(allProducts);
+
+      } catch (error) {
+        console.error("Pikvaro product database error:", error);
+
+        productGrid.innerHTML = `
+          <div class="empty-state" style="grid-column: 1 / -1;">
+            <h3>Product database unavailable</h3>
+            <p>Make sure <strong>products.json</strong> is uploaded in the same GitHub repository as this index.html file.</p>
+          </div>
+        `;
+
+        productStatus.textContent = "Could not load products.json.";
+      }
+    }
+
+    searchForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+      searchProducts(searchInput.value, "");
+      document.getElementById("products").scrollIntoView({ behavior: "smooth" });
+    });
+
+    newsletterForm.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const email = emailInput.value.trim();
+
+      if (!email) {
+        newsletterMessage.textContent = "Please enter your email address.";
+        return;
+      }
+
+      newsletterMessage.textContent =
+        "Thanks! Newsletter signup will be connected in a later step.";
+
+      emailInput.value = "";
+    });
+
+    loadProducts();
+  </script>
+</body>
+</html>
